@@ -54,7 +54,7 @@ def main_abbyy(args):
     processor.Password = args.abbyy_pwd
 
     if args.img_type == 'URL':
-        print('Sending URL paths to ABBYY is not implemented, please send a local image file')
+        print('Sending URL paths to ABBYY is not supported, please upload a local image file')
 
     else:
         sourceFile = args.img_path
