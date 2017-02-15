@@ -80,6 +80,7 @@ def main(_argv):
     # -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- ..
     # Call for sub-main engines:
     predictions = {}
+    f = None
 
     if not path.exists(args.res_path):
         makedirs(args.res_path)
@@ -89,6 +90,7 @@ def main(_argv):
         sources = []
         for filename in sources_pre:
             sources.append(path.join(args.img_dir, filename))
+        f = open(path.join(args.res_path, args.sdk_type.lower()) + '.summary.txt', 'w')
         args.img_type = 'FILE'
 
     else:
@@ -108,6 +110,11 @@ def main(_argv):
 
         # Print results:
         print predictions[filename]
+        if f:
+            f.write(filename + ' ---> ' + str(len(predictions[filename])) + ' characters\n')
+
+    if f:
+        f.close()
 
 # ---------------------------------------------------------------------------------------------------------------
 
