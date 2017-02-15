@@ -9,7 +9,7 @@
 
 from main_microsoft import main_microsoft
 from main_abbyy import main_abbyy
-from os import listdir, path
+from os import listdir, path, makedirs
 from sys import exit, argv
 from time import time
 import getopt
@@ -80,6 +80,9 @@ def main(_argv):
     # -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- .. -- ..
     # Call for sub-main engines:
     predictions = {}
+
+    if not path.exists(args.res_path):
+        makedirs(args.res_path)
 
     if args.img_type == 'DIR':
         sources_pre = listdir(args.img_dir)
