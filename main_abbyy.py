@@ -58,7 +58,7 @@ def main_abbyy(args):
 
     else:
         sourceFile = args.img_path
-        targetFile = args.res_path
+        targetFile = path.join(args.res_path, path.basename(sourceFile) + '.abbyy.out')
         language = 'English'
         outputFormat = 'txt'
 

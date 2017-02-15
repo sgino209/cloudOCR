@@ -1,6 +1,7 @@
 import httplib
 import urllib
 import ssl
+from os import path
 
 def main_microsoft(args):
 
@@ -34,5 +35,10 @@ def main_microsoft(args):
         conn.close()
     except Exception as e:
         print("Error: %s" % str(e))
+
+    targetFile = path.join(args.res_path, path.basename(args.img_path) + '.microsoft.out')
+    f = open(targetFile, 'w')
+    f.write(str(prediction))
+    f.close()
 
     return prediction
